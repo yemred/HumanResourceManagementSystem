@@ -8,10 +8,12 @@ import kodlamaio.hrms.business.abstracts.EmployerUserService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.ErrorResult;
 import kodlamaio.hrms.core.utilities.results.Result;
+import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.EmployerUserDao;
 import kodlamaio.hrms.entities.concretes.EmployerUser;
 import kodlamaio.hrms.entities.concretes.User;
+import sun.jvm.hotspot.gc.z.ZExternalBitMap;
 
 public class EmployerUserManager implements EmployerUserService {
 
@@ -25,8 +27,8 @@ public class EmployerUserManager implements EmployerUserService {
 
 	@Override
 	public DataResult<List<EmployerUser>> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return new SuccessDataResult(employerUserDao.findAll());
 	}
 
 	@Override
@@ -48,11 +50,17 @@ public class EmployerUserManager implements EmployerUserService {
 	}
 
 	private boolean checkUserByMail(String email) {
-		List<EmployerUser> result = employerUserDao.findByEmail(email);
-		if(result!=null) {
-			return false;
-		}
 		
+		List<EmployerUser> result = employerUserDao.findAll();
+		
+		for(EmployerUser user : result) {
+			
+			if(user.getEmail() == email) {
+				
+				return false;
+			}
+		}
+	
 		return true;
 	}
 }

@@ -11,7 +11,5 @@ import kodlamaio.hrms.entities.concretes.EmployerUser;
 
 public interface EmployerUserDao extends JpaRepository<EmployerUser, Integer> {
 	
-	@Query("SELECT * FROM employerUsers u where u.email = :email") 
-	List<EmployerUser> findByEmail(@Param("email") String email);
 
 }

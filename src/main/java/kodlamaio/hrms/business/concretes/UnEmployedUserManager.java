@@ -67,10 +67,16 @@ public class UnEmployedUserManager implements UnEmployedUserService {
 	}
 	
 	private boolean checkUserByNationalityId(String nationalityId) {
-		List<UnEmployedUser> result = unEmployedUserDao.findByNationalityId(nationalityId);
 		
-		if(result != null) {
-			return false;
+		List<UnEmployedUser> result = unEmployedUserDao.findAll();
+		
+		for(UnEmployedUser user : result) {
+			
+			if(user.getNationalityId() == nationalityId) {
+				
+				return false;
+			}
+			
 		}
 		
 		return true;
@@ -79,10 +85,15 @@ public class UnEmployedUserManager implements UnEmployedUserService {
 
 	private boolean checkUserByMail(String email) {
 		
-		List<UnEmployedUser> result  = unEmployedUserDao.findByEmail(email);
+		List<UnEmployedUser> result  =  unEmployedUserDao.findAll();
 		
-		if(result != null) {
-			return false;
+		for(UnEmployedUser user : result) {
+			
+			if(user.getEmail() == email) {
+				
+				return false;
+			}
+			
 		}
 		
 		return true;
