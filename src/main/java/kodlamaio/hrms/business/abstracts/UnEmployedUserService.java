@@ -12,6 +12,10 @@ public interface UnEmployedUserService {
 	
 	DataResult<List<UnEmployedUser>> getAll();
 	
+	DataResult<UnEmployedUser> getByEmail(String email);
+	
+	DataResult<UnEmployedUser> getByNationalityId(String nationalityId);
+	
 	
 
 }

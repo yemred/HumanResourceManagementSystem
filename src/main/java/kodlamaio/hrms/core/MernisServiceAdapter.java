@@ -1,8 +1,11 @@
 package kodlamaio.hrms.core;
 
+import org.springframework.stereotype.Service;
+
 import kodlamaio.hrms.entities.concretes.UnEmployedUser;
 import tr.gov.nvi.tckimlik.WS.KPSPublicSoapProxy;
 
+@Service
 public class MernisServiceAdapter implements UserCheckService {
 
 	@Override

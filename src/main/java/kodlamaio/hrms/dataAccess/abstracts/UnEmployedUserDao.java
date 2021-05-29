@@ -11,5 +11,8 @@ import kodlamaio.hrms.entities.concretes.UnEmployedUser;
 
 public interface UnEmployedUserDao extends JpaRepository<UnEmployedUser, Integer> {
 	
-
+	UnEmployedUser getByEmail(String email);
+	
+	UnEmployedUser getByNationalityId(String nationalityId);
+	
 }

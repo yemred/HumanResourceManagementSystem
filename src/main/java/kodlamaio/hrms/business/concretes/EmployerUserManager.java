@@ -3,6 +3,7 @@ package kodlamaio.hrms.business.concretes;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.EmployerUserService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
@@ -15,6 +16,7 @@ import kodlamaio.hrms.entities.concretes.EmployerUser;
 import kodlamaio.hrms.entities.concretes.User;
 import sun.jvm.hotspot.gc.z.ZExternalBitMap;
 
+@Service
 public class EmployerUserManager implements EmployerUserService {
 
 	private EmployerUserDao employerUserDao;
@@ -51,16 +53,20 @@ public class EmployerUserManager implements EmployerUserService {
 
 	private boolean checkUserByMail(String email) {
 		
-		List<EmployerUser> result = employerUserDao.findAll();
+		EmployerUser result = employerUserDao.getByEmail(email);
 		
-		for(EmployerUser user : result) {
+		if(result != null) {
 			
-			if(user.getEmail() == email) {
-				
-				return false;
-			}
+			return false;
+			
 		}
 	
 		return true;
+	}
+
+	@Override
+	public DataResult<EmployerUser> getByEmail(String email) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

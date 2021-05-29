@@ -12,4 +12,6 @@ import kodlamaio.hrms.entities.concretes.EmployerUser;
 public interface EmployerUserDao extends JpaRepository<EmployerUser, Integer> {
 	
 
+	EmployerUser getByEmail(String email);
+	
 }

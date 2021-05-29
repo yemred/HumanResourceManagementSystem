@@ -3,6 +3,7 @@ package kodlamaio.hrms.business.concretes;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.UnEmployedUserService;
 import kodlamaio.hrms.core.UserCheckService;
@@ -14,6 +15,7 @@ import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.UnEmployedUserDao;
 import kodlamaio.hrms.entities.concretes.UnEmployedUser;
 
+@Service
 public class UnEmployedUserManager implements UnEmployedUserService {
 	
 	private UnEmployedUserDao unEmployedUserDao;
@@ -68,15 +70,11 @@ public class UnEmployedUserManager implements UnEmployedUserService {
 	
 	private boolean checkUserByNationalityId(String nationalityId) {
 		
-		List<UnEmployedUser> result = unEmployedUserDao.findAll();
+		UnEmployedUser result = unEmployedUserDao.getByNationalityId(nationalityId);
 		
-		for(UnEmployedUser user : result) {
+		if(result != null) {
 			
-			if(user.getNationalityId() == nationalityId) {
-				
-				return false;
-			}
-			
+			return false;
 		}
 		
 		return true;
@@ -85,18 +83,26 @@ public class UnEmployedUserManager implements UnEmployedUserService {
 
 	private boolean checkUserByMail(String email) {
 		
-		List<UnEmployedUser> result  =  unEmployedUserDao.findAll();
+		UnEmployedUser result  =  unEmployedUserDao.getByEmail(email);
 		
-		for(UnEmployedUser user : result) {
+		if(result != null) {
 			
-			if(user.getEmail() == email) {
-				
-				return false;
-			}
-			
+			return false;
 		}
 		
 		return true;
+	}
+
+	@Override
+	public DataResult<UnEmployedUser> getByEmail(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public DataResult<UnEmployedUser> getByNationalityId(String nationalityId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

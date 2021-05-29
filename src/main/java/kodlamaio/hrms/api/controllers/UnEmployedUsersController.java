@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import kodlamaio.hrms.entities.concretes.UnEmployedUser;
@@ -16,7 +17,7 @@ import kodlamaio.hrms.business.abstracts.UnEmployedUserService;
 @RequestMapping("/api/unemployedusers")
 public class UnEmployedUsersController {
 	
-	UnEmployedUserService unEmployedUserService;
+	private UnEmployedUserService unEmployedUserService;
 
 	@Autowired
 	public UnEmployedUsersController(UnEmployedUserService unEmployedUserService) {
@@ -30,7 +31,7 @@ public class UnEmployedUsersController {
 	}
 	
 	@PostMapping("/add")
-	public Result add(UnEmployedUser unEmployedUser ) {
+	public Result add(@RequestBody  UnEmployedUser unEmployedUser ) {
 		return this.unEmployedUserService.add(unEmployedUser);
 	}
 

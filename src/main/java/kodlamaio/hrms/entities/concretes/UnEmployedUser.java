@@ -4,19 +4,25 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@Table(name="unEmployedUsers")
-@AllArgsConstructor
+@Table(name="un_employed_users")
 @NoArgsConstructor
-@PrimaryKeyJoinColumn(name = "id")
+@AllArgsConstructor
+@EqualsAndHashCode(callSuper = false)
+@PrimaryKeyJoinColumn(name="user_id",referencedColumnName = "id")
+
 public class UnEmployedUser extends User {
 
 	@Column(name="firstname")
@@ -31,6 +37,6 @@ public class UnEmployedUser extends User {
 	@Column(name="birthdate")
 	private Date birthdate;
 	
-	//userid eksik
 	
+		
 }
