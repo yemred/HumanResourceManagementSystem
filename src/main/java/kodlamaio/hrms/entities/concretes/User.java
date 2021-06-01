@@ -39,6 +39,9 @@ public class User {
 	
 	@Column(name="email_verified")
 	private boolean emailVerfied;
+	
+	@OneToMany(mappedBy = "user")
+	private List<CirriculumVitae> cirriculumVitaes;
 		
 
 }
