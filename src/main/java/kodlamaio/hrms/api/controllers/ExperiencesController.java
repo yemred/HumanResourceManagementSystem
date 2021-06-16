@@ -3,6 +3,7 @@ package kodlamaio.hrms.api.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ import kodlamaio.hrms.entities.concretes.Experience;
 
 @RestController
 @RequestMapping("/api/experiences")
+@CrossOrigin
 public class ExperiencesController {
 
 	private ExperienceService experienceService;
@@ -35,10 +37,11 @@ public class ExperiencesController {
 		return this.experienceService.add(experience);
 	}
 	
-	@GetMapping("/getall")
-	public DataResult<List<Experience>> findAllOrderByEndDateDesc(){
-		return this.experienceService.findAllOrderByEndDateDesc();
-	}
+	/*
+	 * @GetMapping("/getall") public DataResult<List<Experience>>
+	 * findAllOrderByEndDateDesc(){ return
+	 * this.experienceService.findAllOrderByEndDateDesc(); }
+	 */
 	
 	
 }

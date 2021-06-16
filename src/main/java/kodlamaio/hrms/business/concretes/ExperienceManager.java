@@ -37,7 +37,9 @@ public class ExperienceManager implements ExperienceService {
 
 	@Override
 	public DataResult<List<Experience>> findAllOrderByEndDateDesc() {
-		return new SuccessDataResult<List<Experience>>(this.experienceDao.findAllOrderByEndDateDesc());
+		return null;
+				
+		//return new SuccessDataResult<List<Experience>>(this.experienceDao.findAllOrderByEndDateDesc());
 	}
 
 }

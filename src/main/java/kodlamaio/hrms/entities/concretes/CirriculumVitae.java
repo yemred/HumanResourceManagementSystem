@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -37,21 +39,21 @@ public class CirriculumVitae {
 	@Column(name="cover_letter")
 	private String coverLetter;
 	
-	@OneToMany(mappedBy = "cirriculum_vitaes")
+	@OneToMany(mappedBy = "cirriculumVitae")
 	private List<ProgrammingLanguage> programmingLanguages;
 	
-	@OneToMany(mappedBy = "cirriculum_vitaes")
+	@OneToMany(mappedBy = "cirriculumVitae")
 	private List<Experience> experiences;
 	
-	@OneToMany(mappedBy = "cirriculum_vitaes")
+	@OneToMany(mappedBy = "cirriculumVitae")
 	private List<Education> educations;
 	
-	@OneToMany(mappedBy = "cirriculum_vitaes")
+	@OneToMany(mappedBy = "cirriculumVitae")
 	private List<Language> languages;
 	
 	@ManyToOne()
-	@JoinColumn(name="un_employed_user_id")
-	private UnEmployedUser unEmployedUser;
+	@JoinColumn(name="user_id")
+	private User user;
 	
 
 

@@ -8,5 +8,5 @@ import kodlamaio.hrms.entities.concretes.Education;
 
 
 public interface EducationDao extends JpaRepository<Education, Integer> {
-	List<Education> findAllOrderByEndGraduationYearDesc();
+	//List<Education> findAllOrderByEndGraduationYearDesc();
 }
